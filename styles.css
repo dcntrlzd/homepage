@@ -1,0 +1,112 @@
+html, .root {
+  font-size: 18px;
+  line-height: 27px;
+}
+body, .article {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin: auto;
+}
+h1, .h1 {
+  font-size: 1.9444444rem;
+  line-height: 3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+}
+h2, .h2 {
+  font-size: 1.5555556rem;
+  line-height: 3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+h3, .h3 {
+  font-size: 1.2777778rem;
+  line-height: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0rem;
+}
+h4, .h4 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0rem;
+}
+h5, .h5 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0rem;
+}
+p, ul, ol, pre, table, blockquote {
+  margin-top: 0rem;
+  margin-bottom: 1.5rem;
+}
+ul ul, ol ol, ul ol, ol ul {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+/* Let's make sure all's aligned */
+hr, .hr {
+  border: 1px solid;
+  margin: -1px 0;
+}
+a, b, i, strong, em, small, code {
+  line-height: 0;
+}
+sub, sup {
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+
+.mono, .ngraph-tooltip, h1, h2, h3, h4, h5, h6 {
+  font-family: "mplus-1m",monospace;
+}
+
+html, body { margin: 0; padding: 0; width: 100%; height: 100%; }
+#graph { pointer-events: none; z-index: -1; position: fixed; left: 0; top: 0; width: 100%; height: 100%; }
+
+
+body {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  padding: 2rem;
+  min-height: 100%;
+  font-family: "proxima-nova",sans-serif;
+  background: #333333;
+  color: #ffffff;
+
+  z-index: 5;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+main {
+  max-width: 40rem;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 3rem;
+}
+
+header, footer {
+  margin: 0;
+}
+
+.right {
+  float: right;
+}
+
+.counter {
+  color: #666666;
+}
