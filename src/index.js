@@ -47,8 +47,12 @@ loadDependencies().then(([ Web3, Graph, Renderer]) => {
 
         graph.beginUpdate();
         transactions.forEach((transaction) => {
+          if (!transaction) return;
           const { from, to, contractAddress } = transaction;
-          const params = [from || contractAddress, to || contractAddress, {}];
+          const linkFrom = from || contractAddress;
+          const linkTo = to || contractAddress;
+          if (!linkFrom || !linkTo) return;
+          const params = [linkFrom, linkTo, {}];
           graph.addLink(...params);
         });
         graph.endUpdate();
