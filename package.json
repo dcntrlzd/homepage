@@ -38,7 +38,7 @@
     "publish": "npm-run-all publish:cleanup publish:compile publish:deploy",
     "publish:compile": "webpack -p",
     "publish:cleanup": "rimraf ./build/*",
-    "publish:deploy": "surge build dcntrlzd.io",
+    "publish:deploy": "mv build docs && git commit -am DEPLOY && git push origin/master",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
