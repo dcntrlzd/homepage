@@ -6,6 +6,7 @@
   "dependencies": {
     "autoprefixer": "^7.1.4",
     "babel-polyfill": "^6.26.0",
+    "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.7",
     "ethers": "^3.0.17",
     "extract-loader": "^1.0.1",
@@ -35,10 +36,6 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack -p",
-    "publish": "npm-run-all publish:cleanup publish:compile publish:deploy",
-    "publish:compile": "webpack -p",
-    "publish:cleanup": "rimraf ./build/*",
-    "publish:deploy": "rm -rf docs && mv build docs && git add . && git commit -am DEPLOY && git push origin master",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

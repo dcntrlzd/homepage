@@ -1,11 +1,12 @@
 const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'docs'),
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
   },
@@ -19,6 +20,7 @@ module.exports = {
       template: 'src/index.html',
     }),
     new ExtractTextPlugin('main.[contenthash].css'),
+    new CleanWebpackPlugin(['docs'],{ exclude:  ['CNAME'] }),
   ],
   module: {
     rules: [
