@@ -11,32 +11,33 @@ const backInTime = 5 * 60 * 1000;
 const catchUpInterval = (catchUpTime / backInTime)  * baseInterval;
 
 const loadDependencies = () => Promise.all([
-  import(/* webpackChunkName: "web3" */ 'web3'),
+  import(/* webpackChunkName: "ethers" */ 'ethers'),
   import(/* webpackChunkName: "ngraph" */ 'ngraph.graph'),
   import(/* webpackChunkName: "ngraph" */ 'ngraph.pixel'),
 ]);
 
-loadDependencies().then(([ Web3, Graph, Renderer]) => {
-  const provider = new Web3.providers.HttpProvider("https://mainnet.infura.io/mTYprP0XeHjUrSadUTc0");
-  const web3 = new Web3(provider);
+loadDependencies().then(([ Ethers, Graph, Renderer]) => {
+  const providers = Ethers.providers;
+  const network = providers.networks.mainnet;
+  const provider = new providers.InfuraProvider(network);
+
   const graph = Graph();
   
   let initialized = false;
-
-  web3.eth.getBlockNumber()
-  .then((_latestBlock) => {
-    latestBlock = _latestBlock;
-    initialBlock = latestBlock - Math.floor(backInTime / baseInterval);
-    currentBlock = initialBlock;
-    fetch();
-  });
+  provider.getBlockNumber()
+    .then((_latestBlock) => {
+      latestBlock = _latestBlock;
+      initialBlock = latestBlock - Math.floor(backInTime / baseInterval);
+      currentBlock = initialBlock;
+      fetch();
+    });
 
   function fetch() {
-    web3.eth.getBlock(currentBlock >= latestBlock ? 'latest' : currentBlock)
+    provider.getBlock(currentBlock >= latestBlock ? 'latest' : currentBlock)
       .then(({ number, transactions: transactionIds }) => {
         currentBlock = number;
         return Promise.all(transactionIds.map((transactionId) => {
-          return web3.eth.getTransactionReceipt(transactionId);
+          return provider.getTransaction(transactionId);
         }));
       })
       .then((transactions) => {
@@ -66,9 +67,6 @@ loadDependencies().then(([ Web3, Graph, Renderer]) => {
             link: () => ({ fromColor: 0x666666, toColor: 0x666666 }),
             node: () => ({ color: 0x666666, size: 10 })
           });
-
-          console.log(renderer);
-          // this.renderer.setPixelRatio(window.devicePixelRatio);
 
           initialized = true;
         }

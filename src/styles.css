@@ -1,3 +1,22 @@
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Muli Regular'), local('Muli-Regular'), url(static/fonts/muli/muli-regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Muli SemiBold'), local('Muli-SemiBold'), url(static/fonts/muli/muli-semibold.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Muli Bold'), local('Muli-Bold'), url(static/fonts/muli/muli-bold.woff2) format('woff2');
+}
+
 html, .root {
   font-size: 18px;
   line-height: 27px;
@@ -66,7 +85,7 @@ sub {
   bottom: -0.25em;
 }
 
-.mono, .ngraph-tooltip, h1, h2, h3, h4, h5, h6 {
+.mono, .ngraph-tooltip {
   font-family: "mplus-1m",monospace;
 }
 
@@ -77,12 +96,15 @@ body, a {
   color: #ffffff;
 }
 
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
 body {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
   padding: 2rem;
   min-height: 100%;
-  font-family: "proxima-nova",sans-serif;
+  font-family: "Muli", "Arial", sans-serif;
   background: #333333;
 
   z-index: 5;

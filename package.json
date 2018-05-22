@@ -7,6 +7,7 @@
     "autoprefixer": "^7.1.4",
     "babel-polyfill": "^6.26.0",
     "css-loader": "^0.28.7",
+    "ethers": "^3.0.17",
     "extract-loader": "^1.0.1",
     "minimatch": "^3.0.4",
     "ngraph.graph": "0.0.13",

@@ -9,6 +9,11 @@ module.exports = {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
   },
+  resolve: {
+    alias: {
+      'static': path.resolve(__dirname, 'static'),
+    }
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html',
@@ -22,7 +27,14 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            { loader: 'css-loader' },
+            {
+              loader: 'css-loader',
+              options: {
+                alias: {
+                  './static': path.resolve(__dirname, 'static'),
+                }
+              }
+            },
             { 
               loader: 'postcss-loader',
               options: {
@@ -50,7 +62,11 @@ module.exports = {
             presets: ['env']
           }
         }
-      }
+      },
+      {
+        test: /static\/.*/,
+        use: `file-loader?context=static&name=[path][name].[hash].[ext]`
+      },
     ]
   }
 };
