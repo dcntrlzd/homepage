@@ -13,8 +13,7 @@
     "ngraph.graph": "0.0.13",
     "ngraph.pixel": "^2.4.1",
     "postcss-loader": "^2.0.6",
-    "promise-polyfill": "6.0.2",
-    "web3": "1.0.0-beta.20"
+    "promise-polyfill": "6.0.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
