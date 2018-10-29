@@ -22,7 +22,7 @@ loadDependencies().then(([ Ethers, Graph, Renderer]) => {
   const provider = new providers.InfuraProvider(network);
 
   const graph = Graph();
-  
+
   let initialized = false;
   provider.getBlockNumber()
     .then((_latestBlock) => {
@@ -43,7 +43,7 @@ loadDependencies().then(([ Ethers, Graph, Renderer]) => {
       .then((transactions) => {
         const currentBlockLink = `<a href="https://etherscan.io/txs?block=${currentBlock}" target="_blank">#${currentBlock}</a>`;
         const counter = (currentBlock !== initialBlock) ? `#${initialBlock} -> ${currentBlockLink}` : `${currentBlockLink}`;
-        document.querySelector('.counter').innerHTML = `ETHERERUM BLOCK ${counter}</a>`;
+        document.querySelector('.counter').innerHTML = `ETHEREUM BLOCK ${counter}</a>`;
         currentBlock += 1;
 
         graph.beginUpdate();
